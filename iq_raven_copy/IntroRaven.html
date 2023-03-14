@@ -1,0 +1,43 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    本階段任務：
+                </h4>
+                <br>
+            </div>
+            <div>
+                <br>
+                    本階段包含21題問題。
+                <br>
+                <b>每一題將會有一分鐘的時間可以完成。</b>
+                <br>
+                你將會看到一組圖片，其中會包含著特定的規律，而你的任務是加入一個對你來說最符合邏輯的選項。
+                <!-- 請盡量可能的答出越多問題越好。 -->
+                <br><br>
+                <b>在本階段，每答出一題將會獲得10法幣。</b>
+                <br><br>
+                點擊下方的“NEXT"按鈕來開始作答。
+                <br><br>
+                <b>請注意，一但你點了下一頁，將無法回去上一題作答。
+
+                </b>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

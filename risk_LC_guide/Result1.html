@@ -1,0 +1,43 @@
+{{ block title }}
+    測驗結果
+{{ endblock }}
+{{ block content }}
+<style>
+    /* we use this instead of setting 'disabled' because disabled inputs don't get
+    submitted by the form, and therefore the server would complain that the form is missing.
+     */
+    input {
+        pointer-events: none;
+    }
+
+    .solution-incorrect {
+        color: red;
+    }
+
+    .solution-correct {
+        color: green;
+    }
+</style>
+
+<p>1. 下圖是「資料庫」中某次抽球的過程，目前已經從藍罐抽出兩顆藍球，假設此次總共要抽三顆球，請問下次抽出<span style="color: red;font-weight:bold; font-size: 18px">紅球</span>的機率是多少？</p>
+    <p>
+        <br><img src="{{ static 'risk/bluebar.png' }}", width="150px"/>
+        <img src="{{ static 'risk/0.png' }}", width="100px" />
+        <img src="{{ static 'risk/0.png' }}", width="100px" />
+    </br></p>
+{{ formfield 'Q1' }}
+    {{ if is_Q1_correct }}
+    <p class="solution-correct">
+        正確
+    </p>
+    {{ else }}
+    <p class="solution-incorrect">
+        錯誤，本題答案為 A. ，在資料庫抽球的過程中，抽球是取後放回，且每顆球被抽中機率相等。因此抽中紅球機率是1/3。
+    </p>
+    {{ endif }}
+
+
+
+{{ next_button }}
+
+{{ endblock }}

@@ -1,0 +1,24 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+本階段結果
+{% endblock %}
+
+{% block content %}
+
+    {% if player.payoff == 0 %}
+        你沒有成功解出任何問題。請按 Next 進入下一個實驗。
+        <!--<br>Sie erhalten daher keine zusätzliches Geld aufgezahlt.-->
+    {% endif %}
+    {% if player.payoff > 0 %}
+        你成功解出來 {{ player.correct_answers }} 個問題。請按 Next 進入下一個實驗。
+        <!--<br>Sie erhalten daher zusätzliche {{ player.payoff }} ausgezahlt.-->
+    {% endif %}
+
+    <br><br>
+    {% next_button %}
+{% endblock %}
+
+
+

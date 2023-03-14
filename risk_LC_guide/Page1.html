@@ -1,0 +1,18 @@
+{{ block title }}
+    理解測驗
+{{ endblock }}
+{{ block content }}
+<p>1. 下圖是「資料庫」中某次抽球的過程，目前已經從藍罐抽出兩顆藍球，假設此次總共要抽三顆球，請問下次抽出<span style="color: red;font-weight:bold; font-size: 18px">紅球</span>的機率是多少？</p>
+<p>
+    <br><img src="{{ static 'risk/bluebar.png' }}", width="150px"/>
+    <img src="{{ static 'risk/0.png' }}", width="100px" />
+    <img src="{{ static 'risk/0.png' }}", width="100px" />
+
+</br></p>
+{{ formfields }}
+
+
+
+{{ next_button }}
+
+{{ endblock }}

@@ -1,0 +1,54 @@
+{{ block title }}
+    測驗結果
+{{ endblock }}
+{{ block content }}
+<style>
+    /* we use this instead of setting 'disabled' because disabled inputs don't get
+    submitted by the form, and therefore the server would complain that the form is missing.
+     */
+    input {
+        pointer-events: none;
+    }
+
+    .solution-incorrect {
+        color: red;
+    }
+
+    .solution-correct {
+        color: green;
+    }
+</style>
+
+<p>2. 如果本回合呈現的抽球結果如下圖，若本回合以「紅罐抽獎」作為酬賞決定方式，請問下列何者敘述正確？</p>
+<p>
+    <br>
+    <img src="{{ static 'risk/0.png' }}", width="100px"/>
+    <img src="{{ static 'risk/0.png' }}", width="100px"/>
+    <img src="{{ static 'risk/1.png' }}", width="100px"/>
+
+
+</br></p>
+{{ formfield 'Q2' }}
+    {{ if is_Q2_correct }}
+    <p class="solution-correct">
+        正確
+    </p>
+    {{ else }}
+    <p class="solution-incorrect">
+        錯誤，本題答案為 C. ，紅罐抽獎決定報酬時，電腦會從預先隨機挑出 100 筆相同抽球結果的資料中，隨機選取 1 筆。並且根據該筆資料的罐子顏色決定本回合的報酬。
+
+    </p>
+    {{ endif }}
+
+<!--     <p>
+        <br>
+        <img src="{{ static 'risk/0.png' }}" />
+        <img src="{{ static 'risk/0.png' }}" />
+        <img src="{{ static 'risk/1.png' }}" />
+    
+    
+    </br></p> -->
+
+{{ next_button }}
+
+{{ endblock }}

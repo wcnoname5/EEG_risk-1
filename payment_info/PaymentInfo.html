@@ -1,0 +1,17 @@
+{{ block title }}實驗報酬{{ endblock }}
+{{ block content }}
+
+    <p>
+        感謝您參與本次的實驗。 <br>
+
+        您被抽中的是第 {{ participant.selected_round }} 輪的決策。<br>
+        您在本實驗的額外報酬為 {{ participant.final_payoff }} 法幣。<br>
+
+         您在本實驗的總報酬為 {{ participant.total_payoff }} 法幣。<br> 
+
+    </p>
+
+    {{ formfields }}
+{{next_button}}
+{{ endblock }}
+

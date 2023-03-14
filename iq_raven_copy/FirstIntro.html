@@ -1,0 +1,37 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                實驗說明
+                </h3>
+
+                    感謝您參與本次實驗，本實驗總共包含兩個階段，所需時間約 1 小時。
+                <br>
+                <b>實驗結束後，您將得到定額車馬費新台幣 100 元，以及您在實驗中獲得的「法幣」所兌換之新台幣。（「法幣」為本實驗的實驗貨幣單位。）</b>
+                <br>
+                您在實驗中所能獲得的「法幣」會根據您所做的決策來決定。每個人的報酬可能不同，且會獨自領取報酬，您沒有義務告訴其他人您的報酬多寡。
+                <!-- 請盡量可能的答出越多問題越好。 -->
+                <br><br>
+                <b>請注意，本實驗的「法幣」和新台幣兌換匯率為 1:0.5 (法幣 1 元 = 新台幣 0.5元）</b>
+                <br><br>
+                實驗進行中請勿交談，如果你對實驗內容有任何疑問，請舉手，實驗者會過來為您解答。
+                <br><br>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

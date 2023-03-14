@@ -1,0 +1,48 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+<!-- 第一題 -->
+{% endblock %}
+{% block content %}
+    <!-- Include the modal defined in script below. It asks if one really wants to submit the task. -->
+    <div class="tab-content">
+        <div ><br>
+            <a class="anchor" id="part1"></a>
+            <h3>Task {{player.round_number}}</h3>
+            <div id='raven_1'>
+                <!-- <p><img align="middle"
+                        src="{% static "iq_raven/Raven1.jpg" %}"/></p> -->
+                <p><img align="middle" 
+                    src="{{ static image_path }}" height="400"/></p>
+                <br>{% formfield player.feedback %}
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="end_timestamp" id="end_timestamp" />
+    <br><br>
+
+<input type="hidden" name="start_timestamp" id="start_timestamp" />
+<input type="hidden" name="end_timestamp" id="end_timestamp" />
+
+<button id="next_button" class="otree-btn-next btn btn-primary" > Next </button>
+
+<script>
+      var id_currentTime = document.getElementById("raven_1");
+      id_currentTime.onclick = function() {
+      document.getElementById("start_timestamp").value=performance.now();
+
+  };
+      var Next = document.getElementById("next_button");
+      Next.onclick = function() {
+          document.getElementById("end_timestamp").value=performance.now();
+      };
+</script>
+
+<script type="text/javascript">
+    
+</script>
+
+
+{% endblock %}

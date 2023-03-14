@@ -1,0 +1,36 @@
+{{ block title }}
+    測驗結果
+{{ endblock }}
+{{ block content }}
+<style>
+    /* we use this instead of setting 'disabled' because disabled inputs don't get
+    submitted by the form, and therefore the server would complain that the form is missing.
+     */
+    input {
+        pointer-events: none;
+    }
+
+    .solution-incorrect {
+        color: red;
+    }
+
+    .solution-correct {
+        color: green;
+    }
+</style>
+
+{{ formfield 'Q7' }}
+    {{ if is_Q7_correct }}
+    <p class="solution-correct">
+        正確
+    </p>
+    {{ else }}
+    <p class="solution-incorrect">
+        錯誤，答案應為「分到 3 人一組的受試者會知道自己組有 3 人」，在正式實驗的選擇回合中，當您是在 3 人一組的組別，會出現一行紅字提醒「 本回合您在 3 人一組 」的組別。換言之，若您沒有看到這行紅字，代表您是在 5 人或 4 人的那一組。
+    </p>
+    {{ endif }}
+
+
+{{ next_button }}
+
+{{ endblock }}

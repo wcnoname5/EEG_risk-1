@@ -1,0 +1,26 @@
+{{ block title }}
+抽球階段
+{{ endblock }}
+
+{{ block content }}
+<p>本回合抽球結果如下</p>
+{{ for img_path in img_paths }}
+        <img src="{{ static img_path }}">
+{{ endfor }}
+
+
+<input type="hidden" name="end_timestamp_for_draw" id="end_timestamp" />
+
+<button id="next_button" class="otree-btn-next btn btn-primary" > Next </button>
+
+<script>
+      var Next = document.getElementById("next_button");
+      Next.onclick = function() {
+          document.getElementById("end_timestamp").value=performance.now();
+      };
+</script>
+
+{{ endblock }}
+
+
+

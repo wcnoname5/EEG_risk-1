@@ -1,0 +1,36 @@
+{{ block title }}
+    測驗結果
+{{ endblock }}
+{{ block content }}
+<style>
+    /* we use this instead of setting 'disabled' because disabled inputs don't get
+    submitted by the form, and therefore the server would complain that the form is missing.
+     */
+    input {
+        pointer-events: none;
+    }
+
+    .solution-incorrect {
+        color: red;
+    }
+
+    .solution-correct {
+        color: green;
+    }
+</style>
+
+{{ formfield 'Q6' }}
+    {{ if is_Q6_correct }}
+    <p class="solution-correct">
+        正確
+    </p>
+    {{ else }}
+    <p class="solution-incorrect">
+        錯誤，答案應為「您在第一階段的投票結果可能會影響本回合最終的統計結果」，加總第一階段 + 第二階段的選擇數 （ 共 12 位受試者 ） 後，才得出一個回合統計結果 。
+    </p>
+    {{ endif }}
+
+
+{{ next_button }}
+
+{{ endblock }}
