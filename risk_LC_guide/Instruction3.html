@@ -4,18 +4,23 @@
 
 {{ block content }}
 
-<!-- 回合數！！！ -->
 
-<p>本實驗總共有 <b>{{player.session.config.num_of_round}}  回合</b>。每一回合，電腦會先從所有可能的抽球結果中隨機挑選 1 種來呈現。以下圖為例，此抽球結果為 2 藍 1 紅。
-        <br>
-    <img src="{{ static 'risk/ex2.png' }}" width="200px"/> </br>
-因抽球數量為 0-3 顆不等，少於 3 顆的情況我們會用虛線圓圈取代，如下圖所示:
-        <br>
-    <img src="{{ static 'risk/ex1.png' }}" width="200px"/> </br>
-    上圖代表該次只抽了兩顆球，結果為 1 顆藍球以及 1 顆紅球。</p>
+<p>舉例來說，下圖是抽了 10 萬次中 3 次的範例。</p>
 
-<p>接下來，請根據您看到的抽球結果，<span style="font-weight:bold">判斷該結果是自<span style="color: red;font-weight:bold">紅罐</span>抽出的可能性。</span></p>
-<!-- {{ next_button }} -->
+
+
+<img src="{{ static 'risk/Instruct_01.png' }}" style="width:250px; height:auto;">
+
+    <p style="font-size: small;">第一次抽球的罐子是藍罐，沒有抽任何球。<br>
+    第二次抽球的罐子是紅罐，抽到 3 顆球，分別是 1 藍 2 紅。<br>
+    第三次抽球的罐子是藍罐，抽到 3 顆球，分別是 2 藍 1 紅。</p>
+    
+    <p>請注意，每次抽球，電腦只在乎兩種球的相對數量，不在乎抽球順序。</p>
+    <p>舉例來說：藍、藍、紅 與 紅、藍、藍，都會被記錄成 2 藍 1 紅。</p>
+
+
+<!-- 
+{{ next_button }} -->
 
 {{ endblock }}
 
