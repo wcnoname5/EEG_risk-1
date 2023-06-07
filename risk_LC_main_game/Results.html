@@ -3,20 +3,21 @@
 {{ endblock }}
 
 {{ block content }}
-
+    <p hidden id="red_value"> {{ player.is_red }} </p>
+    <p hidden id="random"> {{player.is_random }}</p>
     <p>{{ if player.is_random }}
         <p>本回合的答案罐是
              <span style="font-weight:bold;font-size:120%;" id="jar">{{ player.is_red_str }}</span> 
         </p>
-        <p>本回合您從第 {{ player.switching_point }} 行開始選擇隨機抽獎 </p>
-        <p>本回合抽中第 {{ player.row }} 行的選擇 </p>
-        <p>該行您的選擇為 <span style="font-weight:bold;font-size:120%;"> 隨機抽獎 </span></p>
+        <p>本回合您從第 <span id="sw">{{ player.switching_point }}</span>  行開始選擇隨機抽獎 </p>
+        <p>本回合抽中第 <span id="row">{{ player.row }}</span> 行的選擇 </p>
+        <p>該行您的選擇為 <span style="font-weight:700;font-size:105%;"> 隨機抽獎 </span>
+            ，中獎的可能性是 <span id="prob"></span>
+        </p>
        <!--
         <p>該行您的選擇為隨機抽獎，對應的中獎號碼是 1 - {{ player.row_lottery }} </p>
-        <p>您的彩票號碼為 {{ player.lottery }} </p>
-        --> 
-        
-        <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
+        <p>您的彩票號碼為 {{ player.lottery }} </p> 
+        <p>本回合您<span id="win"></span>的報酬為 {{ player.temp_payoff }}</p>-->
 
         {{ else }}
         <p>本回合的答案罐是
@@ -24,12 +25,12 @@
         </p>
         <p>本回合您從第 {{ player.switching_point }} 行開始選擇隨機抽獎 </p>
         <p>本回合抽中第 {{ player.row }} 行的選擇 </p>
-        <p>該行您的選擇為 <span style="font-weight:bold;font-size:120%;">紅罐抽獎</span> </p>
-        <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
+        <p>該行您的選擇為 <span style="font-weight:700;font-size:110%;">紅罐抽獎</span> </p>
         {{ endif }}
         </p>
-        <!--<p>{{player.switching_point}}</p>
-        <div id="table">
+    <p id="shite"></p>
+    <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
+    <!--    <div id="table">
             <table class="table table-striped">
                 <colgroup>
                     <col width="70%">
@@ -42,7 +43,7 @@
                     <td align="left"><b>採用紅罐抽獎</b></td>
                 </tr>
                  <tr>
-                    <td align="middle"><b> 5/100 </b>
+                    <td align="middle" id="1"><b> 5/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -54,7 +55,7 @@
                     <td align="left"><input type="radio" value="right" name="1"  disabled/></td>
                 </tr>
                 <tr>
-                    <td align="middle"><b> 15/100 </b>
+                    <td align="middle" id="2"><b> 15/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -67,7 +68,7 @@
                 </tr>
             
                 <tr>
-                    <td align="middle"><b> 25/100 </b>
+                    <td align="middle" id="3"><b> 25/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -80,7 +81,7 @@
                 </tr>
             
                 <tr>
-                    <td align="middle"><b> 35/100 </b>
+                    <td align="middle" id="4"><b> 35/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -93,7 +94,7 @@
                 </tr>
             
                 <tr>
-                    <td align="middle"><b> 45/100 </b>
+                    <td align="middle" id="5"><b> 45/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -106,7 +107,7 @@
                 </tr>
             
                 <tr>
-                    <td align="middle"><b> 55/100 </b>
+                    <td align="middle" id="6"><b> 55/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -119,7 +120,7 @@
                 </tr>
             
                 <tr>
-                    <td align="middle"><b> 65/100 </b>
+                    <td align="middle" id="7"><b> 65/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -132,13 +133,13 @@
                 </tr>
             
                 <tr>
-                    <td align="middle"><b> 75/100 </b>
+                    <td align="middle" id="8"><b> 75/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
                                name="8"
                                data-amount="8"
-                               checked
+                               disabled
                                >&nbsp;&nbsp;
                     </td>
                     </td>
@@ -146,7 +147,7 @@
                 </tr>
             
                 <tr>
-                    <td align="middle"><b> 85/100 </b>
+                    <td align="middle" id="9"><b> 85/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -159,7 +160,7 @@
                 </tr>
             
                 <tr>
-                    <td align="middle"><b> 95/100 </b>
+                    <td align="middle" id="10"><b> 95/100 </b>
                     <td align="right">
                         <input type="radio"
                                value="left"
@@ -175,7 +176,8 @@
                     <td align="middle"><b> 100/100 </b>
                     <td align="right">
                         <input type="radio"
-                               checked/>&nbsp;&nbsp;
+                               checked
+                               name="11"/>&nbsp;&nbsp;
                     </td>
                     </td>
                     <td align="left"><input type="radio" disabled></td>
@@ -186,7 +188,16 @@
 
 {{ next_button }}
 <script>
-    var a=player.switching_point;
+    const red = document.getElementById("red_value").innerHTML;
+    const row = document.getElementById("row").innerHTML;
+    const Jar_text = document.getElementById("jar");
+
+    if (red == 0) { //redjar 
+        Jar_text.style.color="red";
+    } else if (red == 1) {
+        Jar_text.style.color="blue";
+    }
+    document.getElementById("prob").innerHTML = (row*10 - 5).toString()+"/100";
 
 </script>
 {{ endblock }}
