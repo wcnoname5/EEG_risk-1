@@ -4,16 +4,16 @@
 
 {{ block content }}
     <p hidden id="red_value"> {{ player.is_red }} </p>
-    <p hidden id="random"> {{player.is_random }}</p>
+    <p hidden id="row">{{ player.row }}</p>
+    <p hidden id="sw">{{ player.switching_point }}</p>
     <p>{{ if player.is_random }}
         <p>本回合的答案罐是
              <span style="font-weight:bold;font-size:120%;" id="jar">{{ player.is_red_str }}</span> 
         </p>
-        <p>本回合您從第 <span id="sw">{{ player.switching_point }}</span>  行開始選擇隨機抽獎 </p>
-        <p>本回合抽中第 <span id="row">{{ player.row }}</span> 行的選擇 </p>
+        <p>本回合您從第 {{ player.switching_point }} 行開始選擇隨機抽獎 </p>
+        <p>本回合抽中第 {{ player.row }} 行的選擇 </p>
         <p>該行您的選擇為 <span style="font-weight:700;font-size:105%;"> 隨機抽獎 </span>
-            ，中獎的可能性是 <span id="prob"></span>
-        </p>
+            ，中獎的可能性是<span id="prob"></span></p>
        <!--
         <p>該行您的選擇為隨機抽獎，對應的中獎號碼是 1 - {{ player.row_lottery }} </p>
         <p>您的彩票號碼為 {{ player.lottery }} </p> 
@@ -26,11 +26,12 @@
         <p>本回合您從第 {{ player.switching_point }} 行開始選擇隨機抽獎 </p>
         <p>本回合抽中第 {{ player.row }} 行的選擇 </p>
         <p>該行您的選擇為 <span style="font-weight:700;font-size:110%;">紅罐抽獎</span> </p>
+        <span hidden id="prob"></span>
         {{ endif }}
         </p>
-    <p id="shite"></p>
     <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
-    <!--    <div id="table">
+    <p id="test"></p>
+     <!--   <div id="table">
             <table class="table table-striped">
                 <colgroup>
                     <col width="70%">
@@ -169,7 +170,7 @@
                                disabled>&nbsp;&nbsp;
                     </td>
                     </td>
-                    <td align="left"><input type="radio" disabled></td>
+                    <td align="left"><input type="radio" value="right" name="10" disabled></td>
                 </tr>
             
                  <tr>
@@ -188,7 +189,7 @@
 
 {{ next_button }}
 <script>
-    const red = document.getElementById("red_value").innerHTML;
+    /*const red = document.getElementById("red_value").innerHTML;
     const row = document.getElementById("row").innerHTML;
     const Jar_text = document.getElementById("jar");
 
@@ -198,7 +199,43 @@
         Jar_text.style.color="blue";
     }
     document.getElementById("prob").innerHTML = (row*10 - 5).toString()+"/100";
+    */
 
+    const red = document.getElementById("red_value").innerHTML;
+    const row = document.getElementById("row").innerHTML;
+    const Jar_text = document.getElementById("jar");
+    const Random = document.getElementById("random");
+    const sw = document.getElementById("sw").innerHTML;
+
+    if (red == 0) { //redjar 
+        Jar_text.style.color="red";
+    } else {
+        Jar_text.style.color="blue";
+    }
+    /*if(Random == "true"){
+        document.getElementById("help").hidden = false;
+    }else{}*/
+    document.getElementById("prob").innerHTML = (row*10-5).toString()+"/100";
+    document.getElementById(row).style.color="red"; //Highlight the randomly selected row probability
+
+     //radio
+    document.getElementsByName("11")[0].disabled = true; 
+   for (let i = 1; i <= 11; i++){ //To fill the table 
+        if (i< sw){
+            document.getElementsByName(i)[1].checked = true;
+        }else{
+            document.getElementsByName(i)[0].checked = true;
+        }
+    }/*
+    if (row<sw){
+        document.getElementsByName(row)[1].disabled = false;
+        document.getElementsById("test").innerHTML = row.toString()+ "<"+sw.toString();
+    }else{
+        document.getElementsByName(row)[0].disabled = false;
+        document.getElementsById("test").innerHTML = row.toString()+ ">="+sw.toString();
+    }
+    
+    */   
 </script>
 {{ endblock }}
 
