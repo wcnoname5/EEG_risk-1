@@ -6,6 +6,8 @@
     <p hidden id="red_value"> {{ player.is_red }} </p>
     <p hidden id="row">{{ player.row }}</p>
     <p hidden id="sw">{{ player.switching_point }}</p>
+    <p hidden id="random">{{player.is_random}} </p>
+    <span hidden id = pay>{{ player.temp_payoff }}</span>
     <p>{{ if player.is_random }}
         <p>本回合的答案罐是
              <span style="font-weight:bold;font-size:120%;" id="jar">{{ player.is_red_str }}</span> 
@@ -29,8 +31,8 @@
         <span hidden id="prob"></span>
         {{ endif }}
         </p>
-    <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
-    <p id="test"></p>
+        <p id = "informed"></p>
+        <p>本回合您的報酬為 <span>{{ player.temp_payoff }}</span> </p>
         <div id="table">
             <table class="table table-striped">
                 <colgroup>
@@ -189,32 +191,34 @@
 
 {{ next_button }}
 <script>
-    /*const red = document.getElementById("red_value").innerHTML;
-    const row = document.getElementById("row").innerHTML;
-    const Jar_text = document.getElementById("jar");
-
-    if (red == 0) { //redjar 
-        Jar_text.style.color="red";
-    } else if (red == 1) {
-        Jar_text.style.color="blue";
-    }
-    document.getElementById("prob").innerHTML = (row*10 - 5).toString()+"/100";
-    */
-
     const red = document.getElementById("red_value").innerHTML;
     const row = document.getElementById("row").innerHTML;
-    const Jar_text = document.getElementById("jar");
-    const Random = document.getElementById("random");
+    const pay = document.getElementById("pay").innerHTML.trim();
+    const Random = document.getElementById("random").innerHTML.trim();
     const sw = document.getElementById("sw").innerHTML;
+    const Jar_text = document.getElementById("jar");
+    const Inform = document.getElementById("informed");
+    var arse = (Random=="True");
 
     if (red == 0) { //redjar 
         Jar_text.style.color="red";
     } else {
         Jar_text.style.color="blue";
     }
-    /*if(Random == "true"){
-        document.getElementById("help").hidden = false;
-    }else{}*/
+
+    if(arse){
+        if(pay === "200 法幣"){ //win
+            Inform.innerHTML = "電腦隨機抽獎的結果是「你中獎了」";
+        }else{
+            Inform.innerHTML = "電腦隨機抽獎的結果是「你沒中獎」";
+        }
+    }else{
+        if(pay === "200 法幣"){ //win
+            Inform.innerHTML = "因為答案罐是紅罐";
+        }else{
+            Inform.innerHTML = "因為答案罐是藍罐";
+        }
+    }
     document.getElementById("prob").innerHTML = (row*10-5).toString()+"/100";
     document.getElementById(row).style.color="red"; //Highlight the randomly selected row probability
 
