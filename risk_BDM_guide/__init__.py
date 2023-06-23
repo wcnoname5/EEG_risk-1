@@ -51,7 +51,7 @@ class Player(BasePlayer):
     # quiz answer
  # quiz answer
     Q1 = models.IntegerField(
-        # label="1. 下圖是「資料庫」中某次抽球的過程，目前已經從藍罐抽出兩顆藍球，假設此次總共要抽三顆球，請問下次抽出紅球的機率是多少？",
+        # label="1. 下圖是「資料庫」中某次抽球的過程，目前已經從藍罐抽出兩顆藍球，假設此次總共要抽三顆球，請問下次抽出紅球的可能性是多少？",
         label="",
         choices=[
             [0, 'A. 1/3'], [1, 'B. 1'], [2, 'C. 2/3'], [3, 'D. 0'], ],
@@ -63,18 +63,18 @@ class Player(BasePlayer):
         choices=[
             [0, 'A. 電腦從藍罐和紅罐隨機挑一個，如果挑到紅罐，本回合報酬為 200 法幣。'],
             [1, 'B. 電腦從所有抽球結果為 2 藍 1 紅的資料中，隨機挑出 100 筆。如果這 100 筆資料中，來自紅罐的比較多，本回合報酬為 200 法幣。'], 
-            [2, 'C. 電腦從所有抽球結果為 2 藍 1 紅的資料中，隨機挑出 100 筆。再從這 100 筆資料中再隨機選 1 筆，若該筆資料對應的是紅罐，本回合報酬為 200 法幣。'], 
-            [3, 'D. 電腦從所有抽球結果為 2 藍 1 紅的資料中，隨機挑出 1 筆，若該筆資料對應的是紅罐，本回合報酬為 200 法幣。'], 
+            [2, 'C. 電腦從所有抽球結果為 2 藍 1 紅的資料中，隨機挑出 1 筆，若該筆資料對應的是紅罐，本回合報酬為 200 法幣。'], 
+            [3, 'D. 電腦從所有抽球結果為 2 藍 1 紅的資料中，隨機挑出 100 筆。再從這 100 筆資料中再隨機選 1 筆，若該筆資料對應的是紅罐，本回合報酬為 200 法幣。'], 
             ],
         widget=widgets.RadioSelect, )
 
     Q3 = models.IntegerField(
-        label="3. 如果本回合您認為 100 筆資料中，共有 70 筆來自紅罐，然而在表中填答 60 次，如下圖。請問下列何者敘述「錯誤」？",
+        label="3. 如果本回合您認為答案罐是紅罐的可能性是 70/100 ，卻在表中填答 60/100 ，如下圖。請問下列何者敘述「錯誤」？",
         choices=[
-            [0, 'A. 如果亂數 N 抽到 33，本回合採用紅罐抽獎。根據題幹中您認為的情況，您得到 200 法幣的機率為 70/100。'], 
-            [1, 'B. 如果亂數 N 抽到 66，本回合採用隨機抽獎，您得到 200 法幣的機率為 66/100。'], 
-            [2, 'C. 如果您在表中改選填「 70 次」，且亂數 N 抽到 66， 本回合採用紅罐抽獎。根據題幹中您認為的情況，您得到 200 法幣的機率為 70/100。'], 
-            [3, 'D. 跟據題幹中您認為的情況，無論亂數 N 的數值為何，下圖的填答能夠最大化獲得 200 法幣的機率。'], 
+            [0, 'A. 如果「隨機中獎可能性」為 33/100，本回合採用紅罐抽獎。根據題幹中您認為的情況，您得到 200 法幣的可能性為 70/100。'], 
+            [1, 'B. 如果「隨機中獎可能性」為 66/100，本回合採用隨機抽獎，您得到 200 法幣的可能性為 66/100。'], 
+            [2, 'C. 如果您在表中改選填「 70/100」，且「隨機中獎可能性」為 66/100，本回合採用紅罐抽獎。根據題幹中您認為的情況，您得到 200 法幣的可能性為 70/100。'], 
+            [3, 'D. 跟據題幹中您認為的情況，無論「隨機中獎可能性」為何，下圖的填答能夠最大化獲得 200 法幣的可能性。'], 
             ],
         widget=widgets.RadioSelect, )
 
@@ -109,6 +109,12 @@ class Instruction3(Page):
         player.num_draw = int(round_row_draw['numofdraw'])
         player.is_red = int(round_row_draw['jar'])
 
+class Instruction4(Page):
+    pass
+
+class Instruction5(Page):
+    pass
+
 class PracticeStart(Page):
     pass
 class Draw(Page):
@@ -128,8 +134,8 @@ class Instruction_BDM2(Page):
     pass
 class Instruction_BDM3(Page):
     pass
-class Instruction_BDM4(Page):
-    pass
+#class Instruction_BDM4(Page):
+#    pass
 class Instruction_BDM5(Page):
     pass
 class beforequiz(Page):
@@ -260,7 +266,9 @@ page_sequence = [
     Intro,
     Instruction, 
     Instruction2, 
-    Instruction3, 
+    Instruction3,
+    Instruction4,
+    Instruction5, 
     Instruction_BDM, 
     Instruction_BDM2,
     Instruction_BDM3,

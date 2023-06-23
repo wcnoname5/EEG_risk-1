@@ -8,29 +8,42 @@
     <p hidden id="sw">{{ player.switching_point }}</p>
     <p hidden id="random">{{player.is_random}} </p>
     <span hidden id = pay>{{ player.temp_payoff }}</span>
-    <p>{{ if player.is_random }}
+    <p>
+        {{ if player.is_random }}
         <p>本回合的答案罐是
-             <span style="font-weight:bold;font-size:120%;" id="jar">{{ player.is_red_str }}</span> 
+             <span style="font-weight:bold;font-size:120%;" id="jar">
+                {{ player.is_red_str }}
+            </span> 
         </p>
         <p>本回合您從第 {{ player.switching_point }} 行開始選擇隨機抽獎 </p>
         <p>本回合抽中第 {{ player.row }} 行的選擇 </p>
-        <p>該行您的選擇為 <span style="font-weight:700;font-size:105%;"> 隨機抽獎 </span>
-            ，中獎的可能性是<span id="prob"></span></p>
-       <!--
-        <p>該行您的選擇為隨機抽獎，對應的中獎號碼是 1 - {{ player.row_lottery }} </p>
-        <p>您的彩票號碼為 {{ player.lottery }} </p> 
-        <p>本回合您<span id="win"></span>的報酬為 {{ player.temp_payoff }}</p>-->
+        <p>該行您的選擇為
+             <span style="font-weight:700;font-size:105%;">
+                隨機抽獎
+             </span>
+            ，中獎的可能性是
+            <span id="prob">
+
+            </span>
+        </p>
 
         {{ else }}
         <p>本回合的答案罐是
-            <span style="font-weight:bold;font-size:120%;" id="jar">{{ player.is_red_str }}</span>
+            <span style="font-weight:bold;font-size:120%;" id="jar">
+                {{ player.is_red_str }}
+            </span>
         </p>
         <p>本回合您從第 {{ player.switching_point }} 行開始選擇隨機抽獎 </p>
         <p>本回合抽中第 {{ player.row }} 行的選擇 </p>
-        <p>該行您的選擇為 <span style="font-weight:700;font-size:110%;">紅罐抽獎</span> </p>
+        <p>該行您的選擇為 
+            <span style="font-weight:700;font-size:110%;">
+                紅罐抽獎
+            </span>
+        </p>
         <span hidden id="prob"></span>
         {{ endif }}
         </p>
+        
         <p id = "informed"></p>
         <p>本回合您的報酬為 <span>{{ player.temp_payoff }}</span> </p>
     <p id="test"></p>
@@ -199,8 +212,8 @@
     const sw = document.getElementById("sw").innerHTML;
     const Jar_text = document.getElementById("jar");
     const Inform = document.getElementById("informed");
-    var arse = (Random=="True");
-    //console.log(arse);
+    var IsRandom = (Random=="True");
+    //console.log(IsRandom);
     //console.log(Random);
     //console.log(pay);
     if (red == 0) { //redjar 
@@ -209,7 +222,7 @@
         Jar_text.style.color="blue";
     }
 
-    if(arse){
+    if(IsRandom){
         if(pay === "200 法幣"){ //win
             Inform.innerHTML = "電腦隨機抽獎的結果是「你中獎了」";
         }else{

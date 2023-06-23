@@ -3,11 +3,6 @@
 {{ endblock }}
 
 {{ block content }}
-<!--
-<p>在您看到抽球結果之後，電腦將從「資料庫」中，隨機抽出與您所看到的抽球結果一致的 100 筆資料。 </p>
-<p>請您判斷這 100 次當中，有多少次電腦是使用紅罐抽球。</p>
-<p>接下來您將面對兩種報酬決定方式：<span style="color: black;font-weight:bold"> 紅罐抽獎 </span> 與 <span style="color: black;font-weight:bold"> 隨機抽獎</span>。 </p>
-<p>您必須在表（如下圖）中的每一行進行選擇，依照各情況採用您認為最有可能獲得報酬的抽獎方式。-->
 
 <p>您必須在一張表（如下圖）中的每行進行二選一的選擇來告知您的答案。</p>
 <p>
@@ -16,20 +11,25 @@
     </p>
 <p>
 <p>以下將分別介紹兩種抽獎的報酬決定方式:</p>
-<!-- 
-{{ next_button }} -->
 
-<p><span style="color: black;font-weight:bold; font-size: 24px"> 隨機抽獎：</span></p>   
+<p>
+    <span style="color: black;font-weight:bold; font-size: 24px">
+         隨機抽獎：
+     </span>
+ </p>   
 <p>  每一行中， 隨機抽獎的中獎可能性都不一樣。</p>
 <p>  舉例來說，下圖的第一行，選擇隨機中獎有 5/100 的可能性中獎，而最後一行有 100/100 的可能性中獎。</p>
     
- <p><span style="color: black;font-weight:bold; font-size: 24px"> 紅罐抽獎：</span></p>   
+<p>
+    <span style="color: black;font-weight:bold; font-size: 24px">
+         紅罐抽獎：
+     </span>
+ </p>   
 <p>
     每一行中，紅罐抽獎的中獎可能性都一樣。若「答案罐」是紅罐，即可中獎，反之則無中獎。</p>
 <p> 
     兩種抽獎方式若中獎，都可以獲得 200 法幣。沒中獎則獲得 0 法幣。
-    </p>
+ </p>
 <img src="{{ static 'risk/LC_01.png' }}" width="800px"/> </br></p>
-<!-- 圖片要改 -->
 
 {{ endblock }}

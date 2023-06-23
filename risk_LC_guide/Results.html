@@ -198,7 +198,7 @@
     const sw = document.getElementById("sw").innerHTML;
     const Jar_text = document.getElementById("jar");
     const Inform = document.getElementById("informed");
-    var arse = (Random=="True");
+    var IsRandom = (Random=="True");
 
     if (red == 0) { //redjar 
         Jar_text.style.color="red";
@@ -206,7 +206,7 @@
         Jar_text.style.color="blue";
     }
 
-    if(arse){
+    if(IsRandom){
         if(pay === "200 法幣"){ //win
             Inform.innerHTML = "電腦隨機抽獎的結果是「你中獎了」";
         }else{

@@ -1,9 +1,9 @@
 {{ block title }}
-練習回合(二)：頻率判斷
+練習回合(二)：決定抽獎方式
 {{ endblock }}
 
 {{ block content }}
-<p>請根據您看到抽球結果，在下列選擇表中選擇您認為紅罐最有可能的使用次數。</p>
+<p>請根據您看到抽球結果，在下列選擇表中選擇最接近您認為答案罐為紅罐的可能性。</p>
 
 <input type="hidden" name="switching_point" id="id_switching_point">
 {{ formfield_errors 'switching_point' }}
@@ -16,119 +16,119 @@
 
     <tr>
         <td align="right">
-            <span style="font-size: 20px;"> 每100次同樣的抽球結果，您認為可能使用紅罐次數為 </span>
+            <span style="font-size: 20px;">您認為答案罐為紅罐的可能性為 </span>
         <td> </td>
         <tr>
     <tr>
         <td align="middle">
-            <b> 0 次 </b>
+            <b> 0/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="0"
-                   data-amount="0"
+                   data-amount="0"/>
         </td>
 
         <tr>
         <td align="middle">
-            <b> 10 次 </b>
+            <b> 10/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="1"
-                   data-amount="10"
+                   data-amount="10"/>
 
         </td>
 
         <tr>
         <td align="middle">
-            <b> 20 次 </b>
+            <b> 20/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="2"
-                   data-amount="20"
+                   data-amount="20"/>
 
         </td>
 
         <tr>
         <td align="middle">
-            <b> 30 次 </b>
+            <b> 30/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="3"
-                   data-amount="30"
+                   data-amount="30"/>
         </td>
 
         <tr>
         <td align="middle">
-            <b> 40 次 </b>
+            <b> 40/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="4"
-                   data-amount="40"
+                   data-amount="40"/>
         </td>
 
         <tr>
         <td align="middle">
-            <b> 50 次 </b>
+            <b> 50/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="5"
-                   data-amount="50"
+                   data-amount="50"/>
         </td>
 
         <tr>
         <td align="middle">
-            <b> 60 次 </b>
+            <b> 60/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="6"
-                   data-amount="60"
+                   data-amount="60"/>
         </td>
 
         <tr>
         <td align="middle">
-            <b> 70 次 </b>
+            <b> 70/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="7"
-                   data-amount="70"
+                   data-amount="70"/>
         </td>
 
         <tr>
         <td align="middle">
-            <b> 80 次 </b>
+            <b> 80/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="8"
-                   data-amount="80"
+                   data-amount="80"/>
         </td>
 
         <tr>
         <td align="middle">
-            <b> 90 次 </b>
+            <b> 90/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="9"
-                   data-amount="90"
+                   data-amount="90"/>
         </td>
 
         <tr>
         <td align="middle">
-            <b> 100 次 </b>
+            <b> 100/100 </b>
         <td align="middle">
             <input type="radio"
                    name="bdm"
                    value="10"
-                   data-amount="100"
+                   data-amount="100"/>
         </td>
 
 </table>
