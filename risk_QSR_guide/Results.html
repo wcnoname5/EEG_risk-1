@@ -3,23 +3,293 @@
 {{ endblock }}
 
 {{ block content }}
-
-    <p>
-        {{ if player.is_random }}
-        <p>本回合您所看到的抽球結果是從{{ player.is_red_str }}抽出 </p>
-        <p>本回合您選擇的次數為 {{ player.switching_point }} 次 </p>
-        <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
-
-        {{ else }}
-        <p>本回合您所看到的抽球結果是從{{ player.is_red_str }}抽出 </p>
-        <p>本回合您選擇的次數為 {{ player.switching_point }} 次 </p>
-        <p>本回合您的報酬為 {{ player.temp_payoff }} </p>
-        {{ endif }}
-        </p>
-
-{{ next_button }} 
+<p hidden id="red_value"> {{ player.is_red }} </p>
+<p hidden id="sw">{{ player.switching_point }}</p>
+<span hidden id = pay>{{ player.temp_payoff }}</span>
+<p>
+    {{ if player.is_random }}
+    <p>本回合的答案罐是
+        <span style="font-weight: bold; font-size: 120%;" id="jar">
+            {{ player.is_red_str }}</span> </p>
 
 
+    {{ else }}
+    <p>本回合的答案罐是
+        <span style="font-weight: bold; font-size: 120%;" id="jar">
+            {{ player.is_red_str }}
+         </span>
+     </p>
+    {{ endif }}
+ </p>
+<p>本回合您的回答為 {{ player.switching_point }}/100 </p>
+<p>
+    對應到該行的
+    <a>
+        {{ player.is_red_str }}抽球報酬
+    </a>
+</p>
+<p>本回合您的報酬為 {{ player.temp_payoff }}</p>
+
+<div id="table">
+<table class="table table-striped">
+    <colgroup>
+        <col width="5%">
+        <col width="5%">
+        <col width="30%">
+        <col width="30%">
+        <col width="30%">
+    </colgroup>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td align="middle"><b>您認為答案罐為紅罐的可能性為</b></td>
+        <td align="middle"><b>紅罐抽球報酬</b></td>
+        <td align="middle"><b>藍罐抽球報酬</b></td>
+    </tr>
+    <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="0"
+                   data-amount="0"
+        </td>
+        <td align="middle" id="0">
+            0/100
+        </td>
+        <td align="middle">
+            0
+        </td>
+        <td align="middle">
+            200
+        </td>
+    <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="1"
+                   data-amount="10"
+        </td>
+        <td align="middle" id="10">
+            10/100
+        </td>
+        <td align="middle">
+            38
+        </td>
+        <td align="middle">
+            198
+        </td>
+    <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="2"
+                   data-amount="20"
+        </td>
+        <td align="middle" id="20">
+            20/100
+        </td>
+        <td align="middle">
+            72
+        </td>
+        <td align="middle">
+            192
+        </td>
+
+       <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="3"
+                   data-amount="30"
+        </td>
+        <td align="middle" id="30">
+            30/100
+        </td>
+        <td align="middle">
+            102
+        </td>
+        <td align="middle">
+            182
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="4"
+                   data-amount="40"
+        </td>
+        <td align="middle" id="40">
+            40/100
+        </td>
+        <td align="middle">
+            128
+        </td>
+        <td align="middle">
+            168
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="5"
+                   data-amount="50"
+        </td>
+        <td align="middle" id="50">
+            50/100
+        </td>
+        <td align="middle">
+            150
+        </td>
+        <td align="middle">
+            150
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="6"
+                   data-amount="60"
+        </td>
+        <td align="middle" id="60">
+            60/100
+        </td>
+        <td align="middle">
+            168
+        </td>
+        <td align="middle">
+            128
+        </td>
+
+       <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="7"
+                   data-amount="70"
+        </td>
+        <td align="middle" id="70">
+            70/100
+        </td>
+        <td align="middle">
+            182
+        </td>
+        <td align="middle">
+            102
+        </td>
+       <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="8"
+                   data-amount="80"
+        </td>
+        <td align="middle" id="80">
+            80/100
+        </td>
+        <td align="middle">
+            192
+        </td>
+        <td align="middle">
+            72
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="9"
+                   data-amount="90"
+        </td>
+        <td align="middle" id="90">
+            90/100
+        </td>
+        <td align="middle">
+            198
+        </td>
+        <td align="middle">
+            38
+        </td>
+
+           <tr>
+        <td align="middle">
+        </td>
+        <td align="middle">
+            <input type="radio"
+                   name="qsr"
+                   value="10"
+                   data-amount="100"
+        </td>
+        <td align="middle" id="100">
+            100/100
+        </td>
+        <td align="middle">
+            200
+        </td>
+        <td align="middle">
+            0
+        </td>
+
+
+
+</table>
+</div>
+
+
+{{ next_button }}
+<script>
+    const red = document.getElementById("red_value").innerHTML;
+    //const row = document.getElementById("row").innerHTML;
+    //const pay = document.getElementById("pay").innerHTML.trim();
+    //const Random = document.getElementById("random").innerHTML.trim();
+    const sw = document.getElementById("sw").innerHTML;
+    const SwitchNameIndex = sw/10 ;
+    const Jar_text = document.getElementById("jar");
+    //const Inform = document.getElementById("informed");
+    //var IsRandom = (Random=="True");
+    //console.log(IsRandom);
+    //console.log(Random);
+    console.log(sw);
+    if (red == 0) { //redjar 
+        Jar_text.style.color="red";
+    } else {
+        Jar_text.style.color="blue";
+    }
+    //radio
+    document.getElementById(sw).style.color="red"; //Highlight the randomly selected row probability
+    document.getElementById(sw).style.fontWeight="bold";
+    for (let i = 0; i <= 10; i++){ //To fill the table 
+        document.getElementsByName("qsr")[i].disabled = true;
+        if (i != SwitchNameIndex){
+            document.getElementsByName("qsr")[i].checked = false;
+        }else{
+            document.getElementsByName("qsr")[i].checked = true;
+        }
+    }
+</script>
 {{ endblock }}
 
 
