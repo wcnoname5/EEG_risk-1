@@ -173,13 +173,29 @@
 <!-- <button id="next_button" class="otree-btn-next btn btn-primary" > Next </button> -->
 
 <script>
-      var id_currentTime = document.getElementById("table");
-      id_currentTime.onclick = function() {
-      document.getElementById("start_timestamp").value=performance.now();
+    var id_currentTime = document.getElementById("table");
+    id_currentTime.onclick = function() {
+    document.getElementById("start_timestamp").value=performance.now();
+      /*
+      Yes we all know this function records the timestamp changing until the final response is made,
+      But this is waht I actually want.
+      The time until the first response give us little or even unreadable information in my opinion.
+      */ 
+    };
+/* //Here is the code if someone wants RT til the first response were made
+    var id_currentTime = document.getElementById("table");
+    var count = 0
+    id_currentTime.onclick = function() {
+        if (count=== 0){
+            document.getElementById("risk_st art_timestamp").value-performance.now();
+            count = 1
+        };
+    }; 
+*/
 
-  };
-      var Next = document.getElementById("next_button");
-      Next.onclick = function() {
+    var Next = document.getElementById("next_button");
+    var temp = document.getElementById("start_timestamp").value;
+    Next.onclick = function() {
         // put it down in submitform
           document.getElementById("end_timestamp").value=performance.now();
       };

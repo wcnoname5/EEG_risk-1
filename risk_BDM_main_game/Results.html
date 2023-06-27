@@ -14,10 +14,13 @@
                 {{ player.is_red_str }}
             </span>
          </p>
-        <p>本回合您認為答案罐是紅罐的可能性是
+        <p>本回合您認為答案罐為紅罐的可能性是
              {{ player.switching_point }}/100 </p>
         <p>本回合的隨機中獎可能性為 {{ player.number }}/100  </p>
-        <p>因此採用隨機抽獎 </p>
+        <p>因此採用<span style="font-weight: bold;font-size: 120%;">
+                隨機抽獎
+            </span>
+         </p>
         <p hidden>隨機抽獎抽出的 B 為 {{ player.lottery }} </p>
 
 
@@ -27,10 +30,13 @@
                 {{ player.is_red_str }}
             </span>
          </p>
-        <p>本回合您認為答案罐是紅罐的可能性是
+        <p>本回合您認為答案罐為紅罐的可能性是
              {{ player.switching_point }}/100 </p>
         <p>本回合的隨機中獎可能性為 {{ player.number }}/100  </p>
-        <p>因此採用紅罐抽獎 </p>
+        <p>因此採用<span style="font-weight: bold;font-size: 120%;">
+                紅罐抽獎
+            </span>
+         </p>
         {{ endif }}
         </p>
         <p id="informed"></p>
