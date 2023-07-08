@@ -21,8 +21,8 @@
             <td></td>
             <td></td>
             <td align="middle"><b>您認為答案罐為紅罐的可能性為</b></td>
-            <td align="middle"><b>紅罐抽球報酬</b></td>
-            <td align="middle"><b>藍罐抽球報酬</b></td>
+            <td align="middle"><b>答案罐為紅罐報酬</b></td>
+            <td align="middle"><b>答案罐為藍罐報酬</b></td>
         </tr>
         <tr>
             <td align="middle">
@@ -246,8 +246,13 @@
 
 <script>
       var id_currentTime = document.getElementById("table");
+      var count=0;
       id_currentTime.onclick = function() {
-      document.getElementById("start_timestamp").value=performance.now();
+        if (count===0){
+          document.getElementById("start_timestamp").value=performance.now();
+          count=1;
+        };
+
 
   };
       var Next = document.getElementById("next_button");

@@ -145,9 +145,12 @@
 
 <script>
       var id_currentTime = document.getElementById("table");
+      var count = 0
       id_currentTime.onclick = function() {
-      document.getElementById("start_timestamp").value=performance.now();
-
+        if(count===0){
+            document.getElementById("start_timestamp").value=performance.now();
+            count = 1
+        };
   };
       var Next = document.getElementById("next_button");
       Next.onclick = function() {

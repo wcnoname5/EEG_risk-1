@@ -18,7 +18,7 @@ In LC, BDM, QSR pages of `main_game` apps, there're a few parameters that record
 
 First, `end_timestamp_for_draw` records the duration time from the `Draw` page being loaded until the `Next` button is activated.
 
-Secord, `start_timestamp` records the duration time from the Form page (either be `LC`, `BDM`, or `QSR` ) loaded until the "last" response of the Form is filled, even the name is called "start".
+Secord, `start_timestamp` records the duration time from the Form page (either be `LC`, `BDM`, or `QSR` ) loaded until the "first" response of the Form is filled. That's why it called "start_timestamp".
 
 At last, `end_timestamp` records the duration time from the Form page (either be `LC`, `BDM`, or `QSR` ) loaded until the `Next` button is activated.
 
